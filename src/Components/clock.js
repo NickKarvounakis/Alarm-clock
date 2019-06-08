@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
+import constants from '../store/constants'
 
 function Clock(props){
   return(
@@ -17,28 +17,6 @@ function Clock(props){
       </div>
     </div>
   )
-
-
-
-
-
-  // const mapDispatchToProps = (dispatch) => {
-  //   return{
-  //     handleInputChange: (evt) => {
-  //       console.log('handle input change happenin')
-  //       dispatch({ type:'SEARCH_INPUT_CHANGE',value: evt.target.value})
-  //     },
-  //     handleSubmit: (evt,query) => {
-  //       evt.preventDefault()
-  //       Api.getRepos(dispatch,query)
-  //
-  //     }
-  //   }
-  // }
-
-
-
-
 }
 
 
@@ -53,16 +31,16 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return{
       Increment_minutes: () => {
-        dispatch({ type:'INCREASE_MINUTES'})
+        dispatch({ type:constants.INCREASE_MINUTES})
       },
       Increment_hours: () => {
-        dispatch({ type:'INCREASE_HOURS'})
+        dispatch({ type:constants.INCREASE_HOURS})
       },
       Decrement_minutes: () => {
-        dispatch({ type:'DECREASE_MINUTES'})
+        dispatch({ type:constants.DECREASE_MINUTES})
       },
       Decrement_hours: () => {
-        dispatch({ type:'DECREASE_HOURS'})
+        dispatch({ type:constants.DECREASE_HOURS})
       }
     }
 
