@@ -15,13 +15,15 @@ function Clock(props){
         { props.hours < 10 ?  <h1>0{props.hours}:</h1> : <h1>{props.hours}:</h1>}
         { props.minutes < 10 ?  <h1>0{props.minutes}</h1> : <h1>{props.minutes}</h1>}
       </div>
+      <button onClick={props.Submit}>Submit</button>
+
     </div>
   )
 }
 
 
 const mapStateToProps = (state) => {
-  console.log(state)
+  console.log('state: ',state)
   return{
     minutes:state.minutes,
     hours:state.hours
@@ -41,6 +43,10 @@ const mapDispatchToProps = (dispatch) => {
       },
       Decrement_hours: () => {
         dispatch({ type:constants.DECREASE_HOURS})
+      },
+      Submit: (evt) => {
+        console.log(evt)
+        dispatch({ type:constants.SUBMIT_ALARM_TIME,value:evt.target})
       }
     }
 
