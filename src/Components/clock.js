@@ -27,7 +27,8 @@ const mapStateToProps = (state) => {
   console.log('state: ',state)
   return{
     minutes:state.minutes,
-    hours:state.hours
+    hours:state.hours,
+    schedule:state.schedule
   }
 }
 

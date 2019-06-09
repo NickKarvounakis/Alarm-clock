@@ -22,7 +22,7 @@ const time_left = (hours,minutes) => {
   const current_hour = date.getHours()
   console.log('differnce',minutesx - current_minutes)
   console.log('------------current_hour',current_hour,'hourx----------',hoursx)
-  if(current_hour < hoursx)
+  if(current_hour <= hoursx)
   {
   if(minutesx - current_minutes < 0)
     {
@@ -41,15 +41,26 @@ const time_left = (hours,minutes) => {
   console.log('THE ALARM WILL LIGHT UP IN ',differencehour,'hours and', differenceminute, 'minutes')
   console.log('SCHEDULED ALARM',hoursx,minutesx)
   console.log('Minutes Now',current_minutes,'\nHours Now',current_hour)
-  const ms_hours = 3600000 * differencehour
-  const ms_minutes = 60000 * differenceminute
+  const info = {
+    hoursx:hoursx,
+    minutesx:minutesx,
+    differencehour:differencehour,
+    differenceminute:differenceminute
+  }
+  return info
+}
+
+const conventor = (hours,minutes) => {
+  const ms_hours = 3600000 * hours
+  const ms_minutes = 60000 * minutes
   console.log('CONVERTED',ms_hours,ms_minutes)
   return ms_hours + ms_minutes
 }
 
 const alarm = (hours,minutes,song_playing) => {
-  const ms = time_left(hours,minutes)
-  console.log('xdsxd3111',ms)
+  const time = time_left(hours,minutes)
+  const amount = conventor(time.differencehour,time.differenceminute)
+  console.log(time)
   setTimeout(() => {
     audio = new Audio('carti.mp3')
     console.log('now playing')
@@ -59,12 +70,17 @@ const alarm = (hours,minutes,song_playing) => {
     }, false);
     console.log(audio)
     audio.play();
-  },ms);
+  },amount);
+  return time
 }
 
 const stop = () => {
-  audio.pause()
-  return false;
+  if(audio)
+    {
+    audio.pause()
+    return false;
+    }
+  return true;
 }
 
 
@@ -82,7 +98,7 @@ const reducer = (state = initialState,action) => {
       case constants.DECREASE_MINUTES:
         return Object.assign({}, state, { minutes: App.minute(state.minutes,'decrement')})
       case constants.SUBMIT_ALARM_TIME:
-        return Object.assign({}, state, {schedule: alarm(state.hours,state.minutes,state.song_playing)})
+        return Object.assign({}, state, {schedule: state.schedule.concat(alarm(state.hours,state.minutes,state.song_playing))})
       case constants.STOP_SONG:
         return Object.assign({}, state, {song_playing:stop()})
       default:
