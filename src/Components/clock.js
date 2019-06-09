@@ -16,6 +16,7 @@ function Clock(props){
         { props.minutes < 10 ?  <h1>0{props.minutes}</h1> : <h1>{props.minutes}</h1>}
       </div>
       <button onClick={props.Submit}>Submit</button>
+      <button onClick={props.stop}>Stop Playing</button>
 
     </div>
   )
@@ -47,6 +48,9 @@ const mapDispatchToProps = (dispatch) => {
       Submit: (evt) => {
         console.log(evt)
         dispatch({ type:constants.SUBMIT_ALARM_TIME,value:evt.target})
+      },
+      stop: () => {
+        dispatch({ type:constants.STOP_SONG})
       }
     }
 
