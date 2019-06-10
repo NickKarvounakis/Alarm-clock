@@ -8,7 +8,9 @@ const initialState = {
   hours:d.getHours(),
   minutes:d.getMinutes(),
   schedule:[],
-  song_playing:true
+  song_playing:true,
+  repeat:true,
+  song_name:'classic-alarm-clock.mp3'
 }
 
 
@@ -22,19 +24,23 @@ const time_left = (hours,minutes) => {
   const current_hour = date.getHours()
   console.log('differnce',minutesx - current_minutes)
   console.log('------------current_hour',current_hour,'hourx----------',hoursx)
-  if(current_hour <= hoursx)
+  if(current_hour <= hoursx) // FIRST CASE
   {
-  if(minutesx - current_minutes < 0)
+        console.log('FIRST CASE')
+  if(minutesx - current_minutes < 0) // SECOND CASE
     {
-       differencehour = hoursx - 1
+          console.log('SECOND CASE')
+       differencehour = hoursx - current_hour - 1
        differenceminute = 59-(Math.abs(minutesx - current_minutes))
     }
-  else{
+  else{   //THIRD CASE
+        console.log('THIRD CASE')
     differencehour = hoursx - current_hour
     differenceminute= minutesx - current_minutes
   }
   }
-  else{
+  else{ //FOURTH CASE
+    console.log('FOURTH CASE')
     differencehour = 23-(Math.abs(hoursx-current_hour))
     differenceminute = 59 - (Math.abs(minutesx-current_minutes))
   }
@@ -57,17 +63,20 @@ const conventor = (hours,minutes) => {
   return ms_hours + ms_minutes
 }
 
-const alarm = (hours,minutes,song_playing) => {
+const alarm = (hours,minutes,song_playing,song_name) => {
   const time = time_left(hours,minutes)
   const amount = conventor(time.differencehour,time.differenceminute)
   console.log(time)
   setTimeout(() => {
-    audio = new Audio('carti.mp3')
+    audio = new Audio(`./sounds/${song_name}`)
     console.log('now playing')
-    audio.addEventListener('ended', function() {
-        this.currentTime = 0
-        this.play()
-    }, false);
+    if(song_playing)
+    {
+      audio.addEventListener('ended', function() {
+          this.currentTime = 0
+          this.play()
+      }, false);
+    }
     console.log(audio)
     audio.play();
   },amount);
@@ -77,8 +86,8 @@ const alarm = (hours,minutes,song_playing) => {
 const stop = () => {
   if(audio)
     {
-    audio.pause()
-    return false;
+      audio.pause()
+      return false;
     }
   return true;
 }
@@ -98,9 +107,13 @@ const reducer = (state = initialState,action) => {
       case constants.DECREASE_MINUTES:
         return Object.assign({}, state, { minutes: App.minute(state.minutes,'decrement')})
       case constants.SUBMIT_ALARM_TIME:
-        return Object.assign({}, state, {schedule: state.schedule.concat(alarm(state.hours,state.minutes,state.song_playing))})
+        return Object.assign({}, state, {schedule: state.schedule.concat(alarm(state.hours,state.minutes,state.repeat,state.song_name))})
       case constants.STOP_SONG:
         return Object.assign({}, state, {song_playing:stop()})
+      case constants.REPEAT_TRIGGER:
+        return Object.assign({}, state, {repeat: !state.repeat})
+      case constants.SONG_SET:
+        return Object.assign({}, state, {song_name:action.value})
       default:
         return state
     }
