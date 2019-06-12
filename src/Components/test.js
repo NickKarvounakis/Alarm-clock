@@ -43,14 +43,6 @@ const mapDispatchToProps = (dispatch) => {
  }}
 
 
- const mapStateToProps = (state) => {
-  console.log('state: ',state)
-  console.log('state url',state.url)
-  return{
-    image:state.image,
-    image_url:state.image_url
-  }
-}
 
 
 
@@ -58,4 +50,4 @@ const mapDispatchToProps = (dispatch) => {
 
 
 
-export default connect(mapDispatchToProps,mapDispatchToProps)(Test)
+export default connect(null,mapDispatchToProps)(Test)

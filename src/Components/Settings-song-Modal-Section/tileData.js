@@ -7,7 +7,7 @@
      img: alarm,
      title: 'Classic  clock',
      author: 'unknown',
-     mp3_name: 'classic alarm .mp3',
+     mp3_name: 'classic alarm ',
      mp3_path: './sounds/classic-alarm-clock.mp3',
      id:1
    },
@@ -15,7 +15,7 @@
      img: digital,
      title: 'Digital alarm',
      author: 'unknown',
-     mp3_name: 'digital-alarm-clock.mp3',
+     mp3_name: 'digital alarm ',
      mp3_path: './sounds/digital-alarm-clock.mp3',
      id:2
    },
@@ -23,7 +23,7 @@
      img: alarm,
      title: 'Classic alarm clock',
      author: 'unknown',
-     mp3_name: 'classic-alarm-clock.mp3',
+     mp3_name: 'classic alarm',
      mp3_path: './sounds/classic-alarm-clock.mp3',
      id:3
    },
@@ -31,7 +31,7 @@
      img: alarm,
      title: 'Classic alarm clock',
      author: 'unknown',
-     mp3_name: 'classic-alarm-clock.mp3',
+     mp3_name: 'classic alarm',
      mp3_path: './sounds/classic-alarm-clock.mp3',
      id:4
    },
@@ -39,7 +39,7 @@
      img: alarm,
      title: 'Classic alarm clock',
      author: 'unknown',
-     mp3_name: 'classic-alarm-clock.mp3',
+     mp3_name: 'classic alarm',
      mp3_path: './sounds/classic-alarm-clock.mp3',
      id:5
    },
@@ -47,7 +47,7 @@
      img: alarm,
      title: 'Classic alarm clock',
      author: 'unknown',
-     mp3_name: 'classic-alarm-clock.mp3',
+     mp3_name: 'classic alarm',
      mp3_path: './sounds/classic-alarm-clock.mp3',
      id:6
    },

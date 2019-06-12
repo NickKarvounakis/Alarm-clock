@@ -18,9 +18,8 @@ const initialState = {
   schedule:[],
   song_playing:true,
   repeat:true,
-  song_name:'./sounds/classic-alarm-clock.mp3',
-  image:null,
-  image_url:''
+  song_url:'./sounds/classic-alarm-clock.mp3',
+  song_name:'classic alarm'
 }
 
 
@@ -73,13 +72,13 @@ const conventor = (hours,minutes) => {
   return ms_hours + ms_minutes
 }
 
-const alarm = (hours,minutes,song_playing,song_name) => {
+const alarm = (hours,minutes,song_playing,song_url) => {
   const time = time_left(hours,minutes)
   const amount = conventor(time.differencehour,time.differenceminute)
   console.log(time)
-  console.log('SONG_NAME',song_name)
+  console.log('SONG_NAME',song_url)
   setTimeout(() => {
-    audio = new Audio(song_name)
+    audio = new Audio(song_url)
     console.log('now playing')
     if(song_playing)
     {
@@ -157,7 +156,7 @@ const reducer = (state = initialState,action) => {
       case constants.DECREASE_MINUTES:
         return Object.assign({}, state, { minutes: App.minute(state.minutes,'decrement')})
       case constants.SUBMIT_ALARM_TIME:
-        return Object.assign({}, state, {schedule: state.schedule.concat(alarm(state.hours,state.minutes,state.repeat,state.song_name))})
+        return Object.assign({}, state, {schedule: state.schedule.concat(alarm(state.hours,state.minutes,state.repeat,state.song_url))})
       case constants.STOP_SONG:
         return Object.assign({}, state, {song_playing:stop()})
       case constants.REPEAT_TRIGGER:
@@ -169,7 +168,7 @@ const reducer = (state = initialState,action) => {
       case 'UPLOAD2_FILE':
         return Object.assign({}, state, {image_url:state.image_url.concat(getData(state.image))})
       case 'CREATE_PROJECT':
-        return Object.assign({}, state, {song_name:action.url})
+        return Object.assign({}, state, {song_url:action.url})
       default:
         return state
     }
