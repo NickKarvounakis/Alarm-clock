@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-function Song_cards(props){
+function SongCards(props){
   const classes = useStyles();
   // const [expanded, setExpanded] = React.useState(false);
 //   function handleExpandClick() {
@@ -123,4 +123,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Song_cards)
+export default connect(mapStateToProps)(SongCards)

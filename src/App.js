@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import  './App.css';
 import store from './store/'
 import Body from './Components/body.js'
-import Schedule from './Components/schedule.js'
+import Test from './Components/test.js'
 
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Provider store={store} >
         <Body />
-
+        <Test />
       </Provider>
     </div>
   );

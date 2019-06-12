@@ -45,7 +45,7 @@ function Cards(props) {
               title={tile.title}
               subtitle={<span>by: {tile.author}</span>}
               actionIcon={
-                <Button size="small" variant="contained" color="secondary" className={classes.button} onClick={() => props.song_picker(tile.mp3_name)}>
+                <Button size="small" variant="contained" color="secondary" className={classes.button} onClick={() => props.song_picker(tile.mp3_path)}>
                        CHOOSE
                 </Button>
               }

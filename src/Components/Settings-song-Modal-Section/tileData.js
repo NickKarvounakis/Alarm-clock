@@ -8,6 +8,7 @@
      title: 'Classic  clock',
      author: 'unknown',
      mp3_name: 'classic alarm .mp3',
+     mp3_path: './sounds/classic-alarm-clock.mp3',
      id:1
    },
    {
@@ -15,6 +16,7 @@
      title: 'Digital alarm',
      author: 'unknown',
      mp3_name: 'digital-alarm-clock.mp3',
+     mp3_path: './sounds/digital-alarm-clock.mp3',
      id:2
    },
    {
@@ -22,6 +24,7 @@
      title: 'Classic alarm clock',
      author: 'unknown',
      mp3_name: 'classic-alarm-clock.mp3',
+     mp3_path: './sounds/classic-alarm-clock.mp3',
      id:3
    },
    {
@@ -29,6 +32,7 @@
      title: 'Classic alarm clock',
      author: 'unknown',
      mp3_name: 'classic-alarm-clock.mp3',
+     mp3_path: './sounds/classic-alarm-clock.mp3',
      id:4
    },
    {
@@ -36,6 +40,7 @@
      title: 'Classic alarm clock',
      author: 'unknown',
      mp3_name: 'classic-alarm-clock.mp3',
+     mp3_path: './sounds/classic-alarm-clock.mp3',
      id:5
    },
    {
@@ -43,6 +48,7 @@
      title: 'Classic alarm clock',
      author: 'unknown',
      mp3_name: 'classic-alarm-clock.mp3',
+     mp3_path: './sounds/classic-alarm-clock.mp3',
      id:6
    },
  ]

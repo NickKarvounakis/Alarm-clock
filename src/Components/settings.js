@@ -19,7 +19,14 @@ import { red } from '@material-ui/core/colors';
 
 
 import constants from '../store/constants'
-import Song_cards from './Settings-song-Modal-Section/Modal.js'
+import SongCards from './Settings-song-Modal-Section/Modal.js'
+
+
+
+
+
+
+
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -86,7 +93,7 @@ const useStyles = makeStyles(theme => ({
           </Grid>
           </Box>
           <Grid item>
-            <Song_cards />
+            <SongCards />
           </Grid>
         </Grid>
       </Grid>
@@ -107,7 +114,8 @@ const mapDispatchToProps = (dispatch) => {
     return{
       repeat_handle:() => {
         dispatch({type:constants.REPEAT_TRIGGER})
-    }
+    },
+
   }
 }
 

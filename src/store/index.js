@@ -1,8 +1,16 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import App from './functions.js'
 import constants from './constants'
+
+import {storage} from '../firebase'
+import * as Promise from "bluebird";
+import thunk from 'redux-thunk'
+
 const d =  new Date()
 let audio
+var monka
+
+
 
 const initialState = {
   hours:d.getHours(),
@@ -10,7 +18,9 @@ const initialState = {
   schedule:[],
   song_playing:true,
   repeat:true,
-  song_name:'classic-alarm-clock.mp3'
+  song_name:'./sounds/classic-alarm-clock.mp3',
+  image:null,
+  image_url:''
 }
 
 
@@ -67,8 +77,9 @@ const alarm = (hours,minutes,song_playing,song_name) => {
   const time = time_left(hours,minutes)
   const amount = conventor(time.differencehour,time.differenceminute)
   console.log(time)
+  console.log('SONG_NAME',song_name)
   setTimeout(() => {
-    audio = new Audio(`./sounds/${song_name}`)
+    audio = new Audio(song_name)
     console.log('now playing')
     if(song_playing)
     {
@@ -93,9 +104,48 @@ const stop = () => {
 }
 
 
+
+
+
+
+const handleUpload = (image) => {
+return new Promise(function(resolve,reject){
+console.log('---------UploadTask = ',image.name)
+const uploadTask = storage.ref(`images/${image.name}`).put(image)
+uploadTask.on('state_changed',
+(snapshot) => {
+  // progress function
+  var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  console.log('Upload is ' + progress + '% done');
+},
+(error) => {
+  //error function
+  reject(error)
+},
+ () => {
+    //complete function
+    console.log('props.image:',image.name)
+    storage.ref('images').child(image.name).getDownloadURL().then (url => {
+      console.log(url)
+       resolve(url)
+    })
+})
+})
+
+}
+
+async function getData(value){
+  const result = await handleUpload(value)
+  monka = result
+  console.log(monka)
+  return result
+}
+
+
+
+
 const reducer = (state = initialState,action) => {
     console.log('reducer',action)
-
     switch(action.type){
 
       case constants.INCREASE_HOURS:
@@ -114,6 +164,12 @@ const reducer = (state = initialState,action) => {
         return Object.assign({}, state, {repeat: !state.repeat})
       case constants.SONG_SET:
         return Object.assign({}, state, {song_name:action.value})
+      case 'UPLOAD_FILE':
+        return Object.assign({}, state, {image:action.value})
+      case 'UPLOAD2_FILE':
+        return Object.assign({}, state, {image_url:state.image_url.concat(getData(state.image))})
+      case 'CREATE_PROJECT':
+        return Object.assign({}, state, {song_name:action.url})
       default:
         return state
     }
@@ -122,6 +178,15 @@ const reducer = (state = initialState,action) => {
 
 
 
-const store = createStore(reducer)
+const store = createStore(reducer, applyMiddleware(thunk))
+
+
+store.subscribe(() => {
+  console.log('state updated')
+  console.log('monka: ',monka)
+  console.log('STORE:',store.getState())
+})
+
+
 
 export default store
