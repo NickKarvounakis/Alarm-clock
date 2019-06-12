@@ -18,7 +18,8 @@ const initialState = {
   song_playing:true,
   repeat:true,
   song_url:'./sounds/classic-alarm-clock.mp3',
-  song_name:'classic alarm'
+  song_name:'classic alarm',
+  upload_progress:0
 }
 
 
@@ -131,9 +132,12 @@ const reducer = (state = initialState,action) => {
       case constants.SONG_SET:
         return Object.assign({}, state, {song_name:action.value})
       case constants.UPLOAD_FILE:
-        return Object.assign({}, state, {image:action.value})
+        return Object.assign({}, state, {song_name:action.value})
       case constants.CREATE_PROJECT:
         return Object.assign({}, state, {song_url:action.url})
+      case constants.PROGRESS:
+        console.log('Progress:',action.progress,'%')
+        return Object.assign({}, state, {upload_progress:action.progress})
       default:
         return state
     }

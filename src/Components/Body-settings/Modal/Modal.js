@@ -90,8 +90,9 @@ function SongCards(props){
 
   return(
   <React.Fragment>
-        <Box>
-          <Typography gutterBottom>Select one of our own default songs!</Typography>
+        <Typography variant="h6" className="timestamp">OR</Typography>
+        <Box >
+          <Typography gutterBottom >-Select one of our own default songs!</Typography>
           <Box ml={8}>
             <Button variant="contained" color="secondary" onClick={handleOpen}>Open Sounds</Button>
             Default sound:{props.song_name}

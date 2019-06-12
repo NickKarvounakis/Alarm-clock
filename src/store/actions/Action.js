@@ -9,7 +9,13 @@ export const createProject = (image) => {
     (snapshot) => {
       // progress function
       var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      console.log('Upload is ' + progress + '% done');
+      dispatch({type:'PROGRESS',progress})
+      if(progress === 100)
+        {
+        progress = 0
+        setTimeout(function(){ dispatch({type:'PROGRESS',progress}) }, 10000);
+        }
+
     },
     (error) => {
       //error function
@@ -21,6 +27,8 @@ export const createProject = (image) => {
         storage.ref('images').child(image.name).getDownloadURL().then (url => {
         console.log(url)
         dispatch({ type:'CREATE_PROJECT',url})
+        dispatch({type:'SONG_SET',value:image.name})
+
 
         })
     })

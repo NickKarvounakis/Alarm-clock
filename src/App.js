@@ -11,7 +11,6 @@ function App() {
     <div className="App">
       <Provider store={store} >
         <Body />
-        <Test />
       </Provider>
     </div>
   );
