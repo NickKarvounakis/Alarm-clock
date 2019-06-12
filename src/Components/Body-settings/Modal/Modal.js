@@ -15,7 +15,7 @@ import { red } from '@material-ui/core/colors';
 
 import Modal from '@material-ui/core/Modal';
 
-import Cards from './SongsPopup'
+import Cards from './SongsGrid'
 
 
 
@@ -90,21 +90,13 @@ function SongCards(props){
 
   return(
   <React.Fragment>
-    <Box>
-    <Grid container direction="column"  justify="flex-start" alignItems="flex-start" >
-      <Grid item >
-        <Typography gutterBottom>Select one of our own default songs!</Typography>
-      </Grid >
-      <Grid container direction="row" >
-          <Grid item>
+        <Box>
+          <Typography gutterBottom>Select one of our own default songs!</Typography>
+          <Box ml={8}>
             <Button variant="contained" color="secondary" onClick={handleOpen}>Open Sounds</Button>
-          </Grid>
-          <Grid item >
-              Default sound:{props.song_name}
-          </Grid>
-      </Grid>
-    </Grid>
-    </Box>
+            Default sound:{props.song_name}
+          </Box>
+        </Box>
 
     <Modal    aria-labelledby="simple-modal-title"  aria-describedby="simple-modal-description"  open={open}  onClose={handleClose} >
     <div style={modalStyle} className={classes.paper}>

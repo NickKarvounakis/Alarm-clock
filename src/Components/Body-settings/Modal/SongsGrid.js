@@ -5,13 +5,13 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
-import tileData from './tileData.js';
+import tileData from '../tileData.js';
 import Button from '@material-ui/core/Button';
-import constants from '../../store/constants'
+import constants from '../../../store/constants'
 
 import { connect } from 'react-redux'
 
-import testCreator from './action-creator'
+import testCreator from '../Actions/action-creator'
 
 const useStyles = makeStyles(theme => ({
   root: {

@@ -18,8 +18,8 @@ import { red } from '@material-ui/core/colors';
 
 
 
-import constants from '../store/constants'
-import SongCards from './Settings-song-Modal-Section/Modal.js'
+import constants from '../../store/constants'
+import SongCards from './Modal/Modal.js'
 
 
 
@@ -84,14 +84,12 @@ const useStyles = makeStyles(theme => ({
             <Typography >
                Upload sound from your computer
             </Typography>
-          </Grid>
           <Box mr={20}>
-          <Grid item >
-          <Button variant="contained" color="secondary" className={classes.button} >
+              <Button variant="contained" color="secondary" className={classes.button} >
                  UPLOAD
-          </Button>
-          </Grid>
+               </Button>
           </Box>
+          </Grid>
           <Grid item>
             <SongCards />
           </Grid>

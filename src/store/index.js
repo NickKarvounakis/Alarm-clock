@@ -3,7 +3,6 @@ import App from './functions.js'
 import constants from './constants'
 
 import {storage} from '../firebase'
-import * as Promise from "bluebird";
 import thunk from 'redux-thunk'
 
 const d =  new Date()
@@ -107,38 +106,6 @@ const stop = () => {
 
 
 
-const handleUpload = (image) => {
-return new Promise(function(resolve,reject){
-console.log('---------UploadTask = ',image.name)
-const uploadTask = storage.ref(`images/${image.name}`).put(image)
-uploadTask.on('state_changed',
-(snapshot) => {
-  // progress function
-  var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-  console.log('Upload is ' + progress + '% done');
-},
-(error) => {
-  //error function
-  reject(error)
-},
- () => {
-    //complete function
-    console.log('props.image:',image.name)
-    storage.ref('images').child(image.name).getDownloadURL().then (url => {
-      console.log(url)
-       resolve(url)
-    })
-})
-})
-
-}
-
-async function getData(value){
-  const result = await handleUpload(value)
-  monka = result
-  console.log(monka)
-  return result
-}
 
 
 
@@ -163,11 +130,9 @@ const reducer = (state = initialState,action) => {
         return Object.assign({}, state, {repeat: !state.repeat})
       case constants.SONG_SET:
         return Object.assign({}, state, {song_name:action.value})
-      case 'UPLOAD_FILE':
+      case constants.UPLOAD_FILE:
         return Object.assign({}, state, {image:action.value})
-      case 'UPLOAD2_FILE':
-        return Object.assign({}, state, {image_url:state.image_url.concat(getData(state.image))})
-      case 'CREATE_PROJECT':
+      case constants.CREATE_PROJECT:
         return Object.assign({}, state, {song_url:action.url})
       default:
         return state

@@ -36,9 +36,6 @@ const mapDispatchToProps = (dispatch) => {
        console.log('xd',e.target.files[0])
        dispatch({type:'UPLOAD_FILE',value:e.target.files[0]})
    },
-   handleUpload:() => {
-     dispatch({type:'UPLOAD2_FILE'})
-   },
    createProject: (image) => dispatch(createProject(image))
  }}
 

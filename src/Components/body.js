@@ -4,9 +4,9 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-import Settings from './settings.js'
-import Clock from './clock.js'
-
+import Settings from './Body-settings/SettingsBody.js'
+import Clock from './Body-timer/clock.js'
+import Header from './Header/Header.js'
 
 
 
@@ -18,18 +18,8 @@ import Clock from './clock.js'
 function Body(props){
   return(
     <div>
-        <Typography variant="h1" >ALARM CLOCK</Typography>
-        <Typography component="div">
-          <Box textAlign="center"  fontSize="h6.fontSize">
-              Your personal online alarm clock,made to keep your life in order
-          </Box>
-        </Typography>
-      <Paper >
-      <Box textAlign="center"  fontSize="h1.fontSize" mt={5} mb={10}>
-        <Typography component="div" variant="h2">
-            Add an alarm to your schedule!
-        </Typography>
-      </Box>
+      <Paper>
+      <Header />
       <Box  className="test">
         <Grid container direction="row" justify="center">
           <Clock />
@@ -37,7 +27,6 @@ function Body(props){
         </Grid>
       </Box>
       </Paper>
-
     </div>
   )
 }
