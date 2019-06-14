@@ -8,6 +8,7 @@ body {
 
 .App {
   text-align: center;
+  background:linear-gradient(180deg,  rgba(255,255,255,0) 37%, rgba(51,255,222,0.13) 150%);
 }
 
 .clock{
@@ -48,6 +49,8 @@ cursor:pointer;
 .inputfile + label {
 	cursor: pointer; /* "hand" cursor */
 }
+
+
 /* DEFAULT SOUNDS GRID */
 .extremely-loud{
   color:#FF00FF;

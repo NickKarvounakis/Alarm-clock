@@ -42,22 +42,33 @@ const margin_removal = {
   if(nextProps !== this.props)
   {
 
-
+    // Pointer to the prop(bascially decrements the time-left until every alarm)
     let array2 = nextProps.count
-    console.log(array2)
+    console.log('---------->',array2,this.state.counter)
+    this.setState({
+      counter:this.state.counter + 1
+    })
 
     array2.map((tile,index) => {
-      console.log(tile)
-      const timer = setInterval(() => {
-         if(tile.differenceminute !== 0)
-    	    console.log(index,':',tile.differencehour , ':' , tile.differenceminute--)
-        else if(tile.differenceminute === 0)
-          console.log(index,':',tile.differencehour-- , ':' , tile.differenceminute = 59)
-        this.setState({
-          array_state:array2
-        })
-              },5000)
+       console.log('index:',index,"counter:",this.state.counter)
+      if(index > this.state.counter)
+      {
+          const timer = setInterval(() => {
+            if(tile.differencehour !== 0 || tile.differenceminute !== 0 )
+            {
+             if(tile.differenceminute !== 0)
+        	    console.log(index,':',tile.differencehour , ':' , --tile.differenceminute)
+            else if(tile.differenceminute === 0)
+              console.log(index,':',--tile.differencehour , ':' , tile.differenceminute = 59)
+            }
+            this.setState({
+              array_state:array2
+            })
+                  },60000)
+
+          }
       	})
+
 }
 
 }
@@ -81,7 +92,7 @@ const margin_removal = {
       {
         return(
           this.props.schedule.map((tile,index) => (
-            <Box mt={5} >
+            <Box  mt={2}>
               <Paper className="schedule">
                 <Grid   direction="row" className="timestamp " container >
                     <Grid item>
@@ -110,18 +121,11 @@ const margin_removal = {
     }}
 
   render(){
-
-
   console.log('COUNT----------->',this.props.count)
-  console.log(this.state.array_state)
   return(
     <Box mt={5}>
       <Typography variant="h2">SCHEDULED ALARMS</Typography>
       {this.content()}
-      {this.state.hours_left.map((tile,index) => (
-
-         tile[0] !== 0 || tile[1] !==0 ?  <Typography variant="h1" style={margin_removal} >0{tile[0]}:{tile[1]}</Typography> : <Typography>Empty</Typography>
-      ))}
     <content />
 
 
