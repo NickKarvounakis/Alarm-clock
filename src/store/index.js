@@ -14,6 +14,7 @@ var monka
 const initialState = {
   hours:d.getHours(),
   minutes:d.getMinutes(),
+  seconds:d.getSeconds(),
   schedule:[],
   song_playing:true,
   repeat:true,
@@ -23,14 +24,19 @@ const initialState = {
 }
 
 
-const time_left = (hours,minutes) => {
+const time_left = (hours,minutes,seconds) => {
   let hoursx = hours
   let minutesx = minutes
+  let secondsx = seconds
   let differencehour
   let differenceminute
+  let differencesecond
   const date = new Date()
   const current_minutes = date.getMinutes()
   const current_hour = date.getHours()
+  const current_seconds = date.getSeconds()
+  console.log('--------------------------------####',current_seconds)
+  console.log('DIFFERENCE',current_seconds)
   console.log('differnce',minutesx - current_minutes)
   console.log('------------current_hour',current_hour,'hourx----------',hoursx)
   if(current_hour <= hoursx) // FIRST CASE
@@ -53,6 +59,16 @@ const time_left = (hours,minutes) => {
     differencehour = 23-(Math.abs(hoursx-current_hour))
     differenceminute = 59 - (Math.abs(minutesx-current_minutes))
   }
+
+  if(current_seconds > 0 && minutesx-current_minutes !== 0)
+    {
+      differenceminute = minutesx-current_minutes-1
+      differencesecond= 60 - Math.abs(current_seconds)
+    }
+  else{
+      differencesecond = 0
+  }
+
   console.log('THE ALARM WILL LIGHT UP IN ',differencehour,'hours and', differenceminute, 'minutes')
   console.log('SCHEDULED ALARM',hoursx,minutesx)
   console.log('Minutes Now',current_minutes,'\nHours Now',current_hour)
@@ -60,16 +76,18 @@ const time_left = (hours,minutes) => {
     hoursx:hoursx,
     minutesx:minutesx,
     differencehour:differencehour,
-    differenceminute:differenceminute
+    differenceminute:differenceminute,
+    differencesecond:differencesecond
   }
   return info   //
 }
 
-const conventor = (hours,minutes) => {
+const conventor = (hours,minutes,seconds) => {
   const ms_hours = 3600000 * hours
   const ms_minutes = 60000 * minutes
+  const ms_seconds = 1000 * seconds
   console.log('CONVERTED',ms_hours,ms_minutes)
-  return ms_hours + ms_minutes
+  return ms_hours + ms_minutes + ms_seconds
 }
 // state.hours,state.minutes,state.repeat,state.song_url,state.song_name
 // hours,minutes,song_playing,song_url,name
@@ -77,9 +95,9 @@ const alarm = (state) => {
   let obj = {name:state.song_name}
   console.log('---------------------------->',obj)
   console.log('##PRE--------AUDIO----->',audio)
-  const time = time_left(state.hours,state.minutes)
-
-  const amount = conventor(time.differencehour,time.differenceminute)
+  const time = time_left(state.hours,state.minutes,state.seconds)
+  console.log(time)
+  const amount = conventor(time.differencehour,time.differenceminute,time.differencesecond)
   console.log(time)
   console.log('SONG_NAME',state.song_url)
   // audio = new Audio(song_url)

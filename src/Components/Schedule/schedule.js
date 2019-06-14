@@ -53,19 +53,23 @@ const margin_removal = {
        console.log('index:',index,"counter:",this.state.counter)
       if(index > this.state.counter)
       {
-          const timer = setInterval(() => {
-            if(tile.differencehour !== 0 || tile.differenceminute !== 0 )
-            {
-             if(tile.differenceminute !== 0)
-        	    console.log(index,':',tile.differencehour , ':' , --tile.differenceminute)
-            else if(tile.differenceminute === 0)
-              console.log(index,':',--tile.differencehour , ':' , tile.differenceminute = 59)
-            }
-            this.setState({
-              array_state:array2
-            })
-                  },60000)
+        const timer = setInterval(() => {
+                    if(tile.differencehour !== 0 || tile.differenceminute !== 0 || tile.differencesecond !== 0)
+                    {
+                    if(tile.differenceminute === 0 && tile.differencesecond === 0)
+                        {
+                          console.log(index,':',--tile.differencehour , ':' , tile.differenceminute = 59, tile.differencesecond = 59)
+                        }
 
+                    else if(tile.differencesecond !== 0)
+                	    console.log(index,':',tile.differencehour , ':' , --tile.differencesecond)
+                    else if(tile.differencesecond === 0)
+                      console.log(index,':',tile.differencehour , ':' , --tile.differenceminute, tile.differencesecond = 59)
+                    }
+                    this.setState({
+                      array_state:array2
+                    })
+        },1000)
           }
       	})
 
@@ -103,7 +107,7 @@ const margin_removal = {
                     </Grid>
                     <Grid container direction="column">
                       <Grid item><Typography>Sound:{tile.name}</Typography></Grid>
-                      <Grid item><Typography>Time-left:{tile.differencehour} hours and {tile.differenceminute} minutes</Typography></Grid>
+                      <Grid item><Typography>Time-left:{tile.differencehour} hours and {tile.differenceminute} minutes {tile.differencesecond} seconds</Typography></Grid>
                     </Grid>
                 </Grid>
                 <Button onClick={() => this.props.repeat_handle(this.props.audio)}>stop</Button>
