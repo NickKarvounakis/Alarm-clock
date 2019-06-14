@@ -5,13 +5,16 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+
+
+
+
+
 const margin_removal = {
   marginBottom:"0px",
   marginTop:"0px",
   fontSize:'5rem'
 }
-
-
 
 
 
@@ -29,6 +32,7 @@ const margin_removal = {
               minutes_left:[],
               count:[{differencehour:0,differenceminute:0}],
               counter:-1,
+              song_name:[]
             }
             this.content = this.content.bind(this)
             // this.Decrement = this.Decrement.bind(this)
@@ -70,6 +74,9 @@ const margin_removal = {
                       array_state:array2
                     })
         },1000)
+        console.log('TILEEEEEEEEEEEEEEEE_SONGNAMEEEEEE',tile)
+
+
           }
       	})
 
@@ -125,7 +132,7 @@ const margin_removal = {
     }}
 
   render(){
-  console.log('COUNT----------->',this.props.count)
+  console.log('SONG_URL',this.state.song_name)
   return(
     <Box mt={5}>
       <Typography variant="h2">SCHEDULED ALARMS</Typography>

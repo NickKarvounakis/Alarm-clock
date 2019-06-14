@@ -52,22 +52,51 @@ const time_left = (hours,minutes,seconds) => {
         console.log('THIRD CASE')
     differencehour = hoursx - current_hour
     differenceminute= minutesx - current_minutes
+    console.log(`differencehour = ${differencehour} differenceminute = ${differenceminute}`)
   }
+
+
   }
   else{ //FOURTH CASE
     console.log('FOURTH CASE')
-    differencehour = 23-(Math.abs(hoursx-current_hour))
-    differenceminute = 59 - (Math.abs(minutesx-current_minutes))
+    if(minutesx < current_minutes)
+      {
+          differencehour = (24-(Math.abs(hoursx-current_hour)))-1
+          differenceminute = (59 - Math.abs(minutesx-current_minutes))
+          console.log(`DIFFERENCEMINUTE:      ${differenceminute}`)
+      }
+    else if(minutesx >= current_minutes)
+    {
+          differencehour = (24-(Math.abs(hoursx-current_hour)))
+          differenceminute = minutesx-current_minutes
+    }
+    // else if(minutesx === current_minutes){
+    //   differencehour = (12-(Math.abs(hoursx-current_hour)))
+    //   differenceminute = minutesx-current_minutes
+    //
+    // }
+    // differencehour = 23-(Math.abs(hoursx-current_hour))
+    // differenceminute = 59 - (Math.abs(minutesx-current_minutes))
   }
 
-  if(current_seconds > 0 && minutesx-current_minutes !== 0)
+  if(current_seconds > 0 && minutesx-current_minutes > 0)
     {
-      differenceminute = minutesx-current_minutes-1
+       differenceminute = differenceminute-1
       differencesecond= 60 - Math.abs(current_seconds)
+      console.log('FOURTH CASE')
     }
-  else{
-      differencesecond = 0
+  else if(current_seconds >0 && minutesx-current_minutes === 0){
+    differencehour--
+    differenceminute = 59
+    differencesecond = 60-current_seconds
+    console.log('FIFTH CASE')
   }
+  else if(current_seconds >0 && minutesx-current_minutes < 0){
+      // differenceminute = differenceminute-1
+      differencesecond =  60-Math.abs(current_seconds)
+          console.log('SIXTH CASE')
+  }
+
 
   console.log('THE ALARM WILL LIGHT UP IN ',differencehour,'hours and', differenceminute, 'minutes')
   console.log('SCHEDULED ALARM',hoursx,minutesx)
