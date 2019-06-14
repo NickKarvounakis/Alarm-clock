@@ -48,7 +48,7 @@ cursor:pointer;
 .inputfile + label {
 	cursor: pointer; /* "hand" cursor */
 }
-
+/* DEFAULT SOUNDS GRID */
 .extremely-loud{
   color:#FF00FF;
 }
@@ -61,6 +61,48 @@ cursor:pointer;
   color:#10e5e8;
 }
 
-.text{
+/*  DEFAULT SOUNDS GRID END */
+
+
+/* SCHEDULE */
+
+.container{
+  -webkit-box-shadow: 0px 2px 11px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 2px 11px -1px rgba(0,0,0,0.75);
+  box-shadow: 0px 2px 11px -1px rgba(0,0,0,0.75);
+
+}
+
+.center{
+  line-height: 200px;
+height: 200px;
+
+text-align: center;
+background-color: #fff;
+}
+
+.center-text{
+  line-height: 1.5;
+display: inline-block;
+vertical-align: middle;
+color:grey;
+}
+
+.schedule{
+  background-image: url("digital-alarm-clock.gif");
+  background-repeat: no-repeat;
+  background-size: 15rem;
+  background-position: right;
+
+
+}
+
+/* SCHEDULE END */
+@media only screen and (max-width: 768px ) {
+  .schedule{
+    background-image: none;
+  }
+
+
 
 }

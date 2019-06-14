@@ -6,7 +6,7 @@ import {storage} from '../firebase'
 import thunk from 'redux-thunk'
 
 const d =  new Date()
-let audio
+let audio = ''
 var monka
 
 
@@ -62,7 +62,7 @@ const time_left = (hours,minutes) => {
     differencehour:differencehour,
     differenceminute:differenceminute
   }
-  return info
+  return info   //
 }
 
 const conventor = (hours,minutes) => {
@@ -71,29 +71,38 @@ const conventor = (hours,minutes) => {
   console.log('CONVERTED',ms_hours,ms_minutes)
   return ms_hours + ms_minutes
 }
+// state.hours,state.minutes,state.repeat,state.song_url,state.song_name
+// hours,minutes,song_playing,song_url,name
+const alarm = (state) => {
+  let obj = {name:state.song_name}
+  console.log('---------------------------->',obj)
+  console.log('##PRE--------AUDIO----->',audio)
+  const time = time_left(state.hours,state.minutes)
 
-const alarm = (hours,minutes,song_playing,song_url) => {
-  const time = time_left(hours,minutes)
   const amount = conventor(time.differencehour,time.differenceminute)
   console.log(time)
-  console.log('SONG_NAME',song_url)
+  console.log('SONG_NAME',state.song_url)
+  // audio = new Audio(song_url)
+   let obj2 = Object.assign({}, time, obj);
+  // console.log('OBJECT2:',obj2)
   setTimeout(() => {
-    audio = new Audio(song_url)
-    console.log('now playing')
-    if(song_playing)
+    audio = new Audio(state.song_url)
+    console.log('now playing',audio)
+    if(state.repeat)
     {
       audio.addEventListener('ended', function() {
           this.currentTime = 0
           this.play()
       }, false);
     }
-    console.log(audio)
+
     audio.play();
   },amount);
-  return time
+    console.log('###AFTER--------AUDIO----->',audio)
+  return obj2
 }
 
-const stop = () => {
+const stop = (audio) => {
   if(audio)
     {
       audio.pause()
@@ -123,10 +132,12 @@ const reducer = (state = initialState,action) => {
         return Object.assign({}, state, { minutes: App.minute(state.minutes,'increment')})
       case constants.DECREASE_MINUTES:
         return Object.assign({}, state, { minutes: App.minute(state.minutes,'decrement')})
-      case constants.SUBMIT_ALARM_TIME:
-        return Object.assign({}, state, {schedule: state.schedule.concat(alarm(state.hours,state.minutes,state.repeat,state.song_url))})
+      case constants.SUBMIT_ALARM_TIME: //USER SUBMITS AN ALARM(WITH A TIMER)
+        return Object.assign({}, state, {schedule: state.schedule.concat(alarm(state))})
+        case constants.TRY_SONG:
+          return Object.assign({}, state, {schedule: state.schedule.concat(alarm(0,0,0,action.value,0))})
       case constants.STOP_SONG:
-        return Object.assign({}, state, {song_playing:stop()})
+        return Object.assign({}, state, {song_playing:stop(audio)})
       case constants.REPEAT_TRIGGER:
         return Object.assign({}, state, {repeat: !state.repeat})
       case constants.SONG_SET:
@@ -138,6 +149,8 @@ const reducer = (state = initialState,action) => {
       case constants.PROGRESS:
         console.log('Progress:',action.progress,'%')
         return Object.assign({}, state, {upload_progress:action.progress})
+      case 'STOP_SONG':
+        return Object.assign({}, state, {song_playing:stop(action.value)})
       default:
         return state
     }
@@ -151,7 +164,6 @@ const store = createStore(reducer, applyMiddleware(thunk))
 
 store.subscribe(() => {
   console.log('state updated')
-  console.log('monka: ',monka)
   console.log('STORE:',store.getState())
 })
 

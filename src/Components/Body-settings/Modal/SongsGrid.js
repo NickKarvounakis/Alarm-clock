@@ -12,7 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux'
 
 import testCreator from '../Actions/action-creator'
-
+import testCreator2 from '../Actions/action-creator2'
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -65,7 +65,7 @@ function Cards(props) {
                     </Button>
                   </Grid>
                   <Grid item >
-                    <Button style={{maxWidth: '60px', maxHeight: '25px', minWidth: '30px', minHeight: '10px'}}  variant="contained" color="primary" className={classes.button} onClick={() => props.song_picker(tile)}>
+                    <Button style={{maxWidth: '60px', maxHeight: '25px', minWidth: '30px', minHeight: '10px'}}  variant="contained" color="primary" className={classes.button} onClick={() => props.song_player(tile)}>
                            <Typography style={{fontSize:'0.7rem'}}>TRY</Typography>
                     </Button>
                   </Grid>
@@ -94,7 +94,10 @@ const mapDispatchToProps = (dispatch) => {
     return{
       song_picker:(name) => {
         dispatch(testCreator(name))
-    }
+    },
+      song_player:(name) => {
+        dispatch(testCreator2(name))
+      }
   }
 }
 
