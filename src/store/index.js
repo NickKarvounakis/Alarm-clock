@@ -39,7 +39,7 @@ const time_left = (hours,minutes,seconds) => {
   console.log('DIFFERENCE',current_seconds)
   console.log('differnce',minutesx - current_minutes)
   console.log('------------current_hour',current_hour,'hourx----------',hoursx)
-  if(current_hour <= hoursx) // FIRST CASE
+  if(current_hour < hoursx || current_hour === hoursx && minutesx > current_minutes) // FIRST CASE
   {
         console.log('FIRST CASE')
   if(minutesx - current_minutes < 0) // SECOND CASE
@@ -57,6 +57,7 @@ const time_left = (hours,minutes,seconds) => {
 
 
   }
+
   else{ //FOURTH CASE
     console.log('FOURTH CASE')
     if(minutesx < current_minutes)
