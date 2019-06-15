@@ -7,7 +7,6 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import Typography from '@material-ui/core/Typography';
 import tileData from '../tileData.js';
 import Button from '@material-ui/core/Button';
-import constants from '../../../store/constants'
 import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux'
 
@@ -36,7 +35,7 @@ function Cards(props) {
 
   return (
     <div className={classes.root}>
-      <GridList cellHeight={'180'} className={classes.gridList} cols={2}>
+      <GridList cellHeight={180} className={classes.gridList} cols={2}>
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
           <ListSubheader component="div">
             Sound HUB
@@ -49,7 +48,7 @@ function Cards(props) {
           </ListSubheader>
         </GridListTile>
         {tileData.map(tile => (
-          <GridListTile key={tile.loudness}>
+          <GridListTile key={tile.mp3_path}>
 
               <img src={tile.img} alt={tile.title} />
               <button className="btn">CLICK ME</button>
@@ -66,7 +65,7 @@ function Cards(props) {
                   </Grid>
                   <Grid item >
                     <Button style={{maxWidth: '60px', maxHeight: '25px', minWidth: '30px', minHeight: '10px'}}  variant="contained" color="primary" className={classes.button} onClick={() => props.song_player(tile,props.sample)}>
-                           <Typography style={{fontSize:'0.7rem'}}>TRY</Typography>
+                           <Typography style={{fontSize:'0.7rem'}}>PREVIEW</Typography>
                     </Button>
                   </Grid>
                 </Grid>

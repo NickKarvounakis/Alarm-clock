@@ -3,11 +3,11 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux'
 
 import { makeStyles} from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+
 
 import Typography from '@material-ui/core/Typography';
 
-import Box from '@material-ui/core/Box';
+
 
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
 //   setExpanded(!expanded);
 // }
   return(
-      
+
       <React.Fragment>
       <Grid item sm={3}>
         <Grid container direction="column" justify="flex-start" alignItems="center">

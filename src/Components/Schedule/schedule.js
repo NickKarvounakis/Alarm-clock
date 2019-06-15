@@ -45,28 +45,34 @@ const margin_removal = {
  componentWillReceiveProps(nextProps){
   if(nextProps !== this.props)
   {
-
     // Pointer to the prop(bascially decrements the time-left until every alarm)
     let array2 = nextProps.count
     this.setState({
       counter:this.state.counter + 1
     })
 
-    array2.map((tile,index) => {
+    array2.forEach((tile,index) => {
       if(index > this.state.counter)
       {
-        const timer = setInterval(() => {
+         setInterval(() => {
                     if(tile.differencehour !== 0 || tile.differenceminute !== 0 || tile.differencesecond !== 0)
                     {
                     if(tile.differenceminute === 0 && tile.differencesecond === 0)
                         {
-                          console.log(index,':',--tile.differencehour , ':' , tile.differenceminute = 59, tile.differencesecond = 59)
+                          --tile.differencehour
+                          tile.differenceminute = 59
+                          tile.differencesecond = 59
                         }
 
                     else if(tile.differencesecond !== 0)
-                	    console.log(index,':',tile.differencehour , ':' , --tile.differencesecond)
+                      {
+                      --tile.differencesecond
+                      }
                     else if(tile.differencesecond === 0)
-                      console.log(index,':',tile.differencehour , ':' , --tile.differenceminute, tile.differencesecond = 59)
+                      {
+                      --tile.differenceminute
+                      tile.differencesecond = 59
+                      }
                     }
                     this.setState({
                       array_state:array2
@@ -74,13 +80,7 @@ const margin_removal = {
         },1000)
           }
       	})
-
-}
-
-}
-
-
-
+      }}
 
 
  content = () => {
@@ -88,8 +88,8 @@ const margin_removal = {
       {
         return(
           this.props.schedule.map((tile,index) => (
-            <Box  mt={2}>
-              <Paper className="schedule">
+            <Box  mt={2} className="App" key={index + tile.name}>
+              <Paper className="schedule ">
                 <Grid   direction="row" className="timestamp " container >
                     <Grid item>
                       { tile.hoursx < 10 ?  <Typography variant="h1" style={margin_removal} >0{tile.hoursx}:</Typography> : <Typography variant="h1" style={margin_removal} >{tile.hoursx}:</Typography>}
@@ -99,10 +99,10 @@ const margin_removal = {
                     </Grid>
                     <Grid container direction="column">
                       <Grid item><Typography>Sound:{tile.name}</Typography></Grid>
-                      <Grid item><Typography>Time-left:{tile.differencehour} hours and {tile.differenceminute} minutes {tile.differencesecond} seconds</Typography></Grid>
+                      <Grid item>{tile.differencehour === 0 && tile.differenceminute === 0 && tile.differencesecond ===0 ? <Typography style={{color:'#f50057'}} variant="h6">Alarm Fired</Typography> :<Typography variant="h6">Time-left:{tile.differencehour} hours and {tile.differenceminute} minutes {tile.differencesecond} seconds</Typography>}</Grid>
                     </Grid>
                 </Grid>
-                <Button onClick={() => this.props.repeat_handle(this.props.audio)}>stop</Button>
+
 
               </Paper>
             </Box>

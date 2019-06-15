@@ -2,19 +2,18 @@ import { createStore, applyMiddleware } from 'redux'
 import App from './functions.js'
 import constants from './constants'
 
-import {storage} from '../firebase'
+
 import thunk from 'redux-thunk'
 
 const d =  new Date()
 let audio = ''
-var monka
+
 
 
 
 const initialState = {
   hours:d.getHours(),
   minutes:d.getMinutes(),
-  seconds:d.getSeconds(),
   schedule:[],
   song_playing:true,
   repeat:true,
@@ -26,10 +25,9 @@ const initialState = {
 }
 
 
-const time_left = (hours,minutes,seconds) => {
+const time_left = (hours,minutes) => {
   let hoursx = hours
   let minutesx = minutes
-  let secondsx = seconds
   let differencehour
   let differenceminute
   let differencesecond
@@ -41,7 +39,7 @@ const time_left = (hours,minutes,seconds) => {
   console.log('DIFFERENCE',current_seconds)
   console.log('differnce',minutesx - current_minutes)
   console.log('------------current_hour',current_hour,'hourx----------',hoursx)
-  if(current_hour < hoursx || current_hour === hoursx && minutesx > current_minutes) // FIRST CASE
+  if((current_hour < hoursx || current_hour === hoursx) && minutesx > current_minutes) // FIRST CASE
   {
         console.log('FIRST CASE')
   if(minutesx - current_minutes < 0) // SECOND CASE
@@ -127,7 +125,7 @@ const alarm = (state) => {
   let obj = {name:state.song_name}
   console.log('---------------------------->',obj)
   console.log('##PRE--------AUDIO----->',audio)
-  const time = time_left(state.hours,state.minutes,state.seconds)
+  const time = time_left(state.hours,state.minutes)
   console.log(time)
   const amount = conventor(time.differencehour,time.differenceminute,time.differencesecond)
   console.log(time)

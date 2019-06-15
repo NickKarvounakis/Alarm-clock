@@ -73,7 +73,7 @@ const margin_removal = {
     </Grid>
         <Grid container direction="row" justify="flex-start" alignItems="center" >
           <Grid item  xs={4}>
-            <StyledButton onClick={props.Submit}>Submit</StyledButton>
+            <StyledButton onClick={props.Submit}>Submit alarm</StyledButton>
           </Grid>
           <Grid item xs={4}>
             <StyledButton onClick={props.stop}>Stop Playing</StyledButton>
@@ -86,7 +86,6 @@ const margin_removal = {
 
 
 const mapStateToProps = (state) => {
-  console.log('state: ',state)
   return{
     minutes:state.minutes,
     hours:state.hours,
@@ -109,7 +108,6 @@ const mapDispatchToProps = (dispatch) => {
         dispatch({ type:constants.DECREASE_HOURS})
       },
       Submit: (evt) => {
-        console.log(evt)
         dispatch({ type:constants.SUBMIT_ALARM_TIME,value:evt.target})
       },
       stop: () => {

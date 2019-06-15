@@ -1,15 +1,14 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
-import { makeStyles} from '@material-ui/core/styles';
-import { red } from '@material-ui/core/colors';
+
 import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
+
 
 import Typography from '@material-ui/core/Typography';
 
-import Box from '@material-ui/core/Box';
 
-import {storage} from '../../../firebase'
+
+
 import { createProject } from '../../../store/actions/Action.js'
 import Grid from '@material-ui/core/Grid';
 import LinearDeterminate from './progressBar.js'
@@ -48,9 +47,8 @@ class Upload extends Component {
         </Button>
       </Grid>
       <Grid item>
+        {this.props.progress > 0 ?  <div><Typography >Uploading progress</Typography><LinearDeterminate/></div> : <div></div>}
 
-        <Typography >Uploading progress</Typography>
-        <LinearDeterminate />
 
       </Grid>
 
@@ -66,10 +64,10 @@ class Upload extends Component {
 const mapStateToProps = (state) => {
   console.log('state: ',state)
   return{
-    progress:state.upload_progress,
-    song_name:state.song_name
+    progress:state.upload_progress
   }
 }
+
 
 const mapDispatchToProps = (dispatch) => {
    return{
@@ -88,4 +86,4 @@ const mapDispatchToProps = (dispatch) => {
 
 
 
-export default connect(null,mapDispatchToProps)(Upload)
+export default connect(mapStateToProps,mapDispatchToProps)(Upload)

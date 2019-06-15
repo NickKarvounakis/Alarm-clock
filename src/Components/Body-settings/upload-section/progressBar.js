@@ -1,12 +1,12 @@
 import React from 'react';
-import { lighten, makeStyles,withStyles } from '@material-ui/core/styles';
+import { makeStyles,withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 import { connect } from 'react-redux'
 
 import CustomizedSnackbars from './snackbar'
 
-import cyan from '@material-ui/core/colors/cyan'
+
 
 const useStyles = makeStyles({
   root: {

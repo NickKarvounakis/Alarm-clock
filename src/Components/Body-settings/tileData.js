@@ -42,23 +42,6 @@
      loudness:4,
      loud_class:'not-loud'
    },
-   {
-     img: alarm,
-     title: 'Classic alarm clock',
-     author: 'unknown',
-     mp3_name: 'classic alarm',
-     mp3_path: './sounds/classic-alarm-clock.mp3',
-     loudness:6,
-     loud_class:'loud'
-   },
-   {
-     img: alarm,
-     title: 'Classic alarm clock',
-     author: 'unknown',
-     mp3_name: 'classic alarm',
-     mp3_path: './sounds/classic-alarm-clock.mp3',
-     loudness:6,
-     loud_class:'loud'
-   },
+
  ]
 export  default tileData
