@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 
 import Cards from './SongsGrid.js'
-
+import testCreator2 from '../Actions/action-creator2'
 // Material UI Imports
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -92,7 +92,9 @@ function SongCards(props){
           </Box>
         </Box>
 
-    <Modal    aria-labelledby="simple-modal-title"  aria-describedby="simple-modal-description"  open={open}  onClose={handleClose} >
+    <Modal    aria-labelledby="simple-modal-title"  aria-describedby="simple-modal-description"  open={open}  onClose={() => {
+          setOpen(false)
+          props.song_player()}} >
     <div style={modalStyle} className={classes.paper}>
       <Cards />
     </div>
@@ -109,4 +111,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(SongCards)
+const mapDispatchToProps = (dispatch) => {
+    return{
+      song_player:() => {
+        dispatch(testCreator2('','',true))
+      }
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(SongCards)

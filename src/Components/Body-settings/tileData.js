@@ -6,6 +6,7 @@
  import acoustic_guitar from './static/images/acoustic-guitar.gif'
  import alert from './static/images/siren2.gif'
  import siren_extreme from './static/images/siren_extreme.gif'
+ import tv_static from './static/images/static.gif'
 
  const tileData = [
    {
@@ -54,6 +55,14 @@
      mp3_name: 'Dont use this',
      mp3_path: './sounds/siren_extreme.mp3',
      loudness:999,
+     loud_class:'extremely-loud'
+   },
+   {
+     img: tv_static,
+     title: 'TV Static',
+     mp3_name: 'TV Static',
+     mp3_path: './sounds/tv_static.mp3',
+     loudness:9,
      loud_class:'extremely-loud'
    },
 

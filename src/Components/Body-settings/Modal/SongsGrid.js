@@ -42,7 +42,7 @@ function Cards(props) {
             <div>
             <Typography variant="h6">Annoyingness ranges from 1-10</Typography>
             <Typography  className='not-loud'>0-4:Mild(Not loud at all)</Typography>
-            <Typography  className='loud'>5-8:Loud(it's decently loud :)</Typography>
+            <Typography  className='loud'>5-8:Loud(it's decently loud) :)</Typography>
             <Typography  className='extremely-loud'>8-10:Extremely Loud </Typography>
             </div>
           </ListSubheader>
@@ -95,8 +95,8 @@ const mapDispatchToProps = (dispatch) => {
       song_picker:(name) => {
         dispatch(testCreator(name))
     },
-      song_player:(name,sample,audio) => {
-        dispatch(testCreator2(name,sample,audio))
+      song_player:(name,sample) => {
+        dispatch(testCreator2(name,sample,false))
       }
   }
 }
