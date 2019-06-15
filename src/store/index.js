@@ -20,7 +20,9 @@ const initialState = {
   repeat:true,
   song_url:'./sounds/classic-alarm-clock.mp3',
   song_name:'classic alarm',
-  upload_progress:0
+  upload_progress:0,
+  sample:false,
+
 }
 
 
@@ -183,7 +185,7 @@ const reducer = (state = initialState,action) => {
       case constants.SUBMIT_ALARM_TIME: //USER SUBMITS AN ALARM(WITH A TIMER)
         return Object.assign({}, state, {schedule: state.schedule.concat(alarm(state))})
         case constants.TRY_SONG:
-          return Object.assign({}, state, {schedule: state.schedule.concat(alarm(0,0,0,action.value,0))})
+          return Object.assign({}, state, {sample: action.rev})
       case constants.STOP_SONG:
         return Object.assign({}, state, {song_playing:stop(audio)})
       case constants.REPEAT_TRIGGER:

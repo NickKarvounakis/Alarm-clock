@@ -1,11 +1,23 @@
-const testCreator2 = (payload) => {
-  console.log('payload:',payload)
+import React from 'react'
+  let audio2 = undefined
+  let rev = undefined
+  let temp = undefined
+const testCreator2 = (payload,sample,audio) => {
   return (dispatch) => {
-      
-      const audio = new Audio(payload.mp3_path)
-      audio.play()
-      dispatch({type:'TRY_SONG',value:payload.mp3_path})
-  }
+        if(audio2)
+          audio2.pause()
+        audio2 = new Audio(payload.mp3_path)
+        if(payload.mp3_path === temp)
+          {
+              console.log('ebena')
+              audio2.pause()
+          }
+        else
+            audio2.play()
+        rev = !sample
+        temp = payload.mp3_path
+        dispatch({type:'TRY_SONG',rev})
+            }
 }
 
 export default testCreator2

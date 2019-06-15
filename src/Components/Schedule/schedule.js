@@ -48,13 +48,11 @@ const margin_removal = {
 
     // Pointer to the prop(bascially decrements the time-left until every alarm)
     let array2 = nextProps.count
-    console.log('---------->',array2,this.state.counter)
     this.setState({
       counter:this.state.counter + 1
     })
 
     array2.map((tile,index) => {
-       console.log('index:',index,"counter:",this.state.counter)
       if(index > this.state.counter)
       {
         const timer = setInterval(() => {
@@ -74,9 +72,6 @@ const margin_removal = {
                       array_state:array2
                     })
         },1000)
-        console.log('TILEEEEEEEEEEEEEEEE_SONGNAMEEEEEE',tile)
-
-
           }
       	})
 
@@ -84,16 +79,6 @@ const margin_removal = {
 
 }
 
-// array = [{hours:5,minutes:30},{hours:2,minutes:15}]
-//
-// console.log(array)
-// const timer = setInterval(() => {
-// array.map(tile => {
-// 	console.log(tile.hours-- , ':' , tile.minutes--)
-//   	if(tile.hours ===0)
-//       	clear(timer)
-// })
-// },5000)
 
 
 
@@ -132,7 +117,6 @@ const margin_removal = {
     }}
 
   render(){
-  console.log('SONG_URL',this.state.song_name)
   return(
     <Box mt={5}>
       <Typography variant="h2">SCHEDULED ALARMS</Typography>
