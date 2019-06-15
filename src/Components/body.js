@@ -31,7 +31,6 @@ function Body(props){
 
 
 const mapStateToProps = (state) => {
-  console.log('state: ',state)
   return{
     schedule:state.schedule
   }

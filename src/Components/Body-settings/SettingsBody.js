@@ -50,35 +50,35 @@ const useStyles = makeStyles(theme => ({
   return(
 
       <React.Fragment>
-      <Grid item sm={3}>
-        <Grid container direction="column" justify="flex-start" alignItems="center">
-          <Grid item>
-            <Typography variant="h2">
-                Settings
-            </Typography>
-          </Grid>
-          <Grid item>
-          <FormGroup row>
-            <FormControlLabel  control={
-                <Switch checked={props.repeat} onChange={props.repeat_handle} value={props.repeat} />
-              }
-              label=<Typography variant="h6">Repeat</Typography>
-             />
-          </FormGroup>
-          </Grid>
-          <Grid item>
-            <Typography variant="h5" style={{color:'#00A480'}}>
-                Alarm sound
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Upload />
-          </Grid>
-          <Grid item>
-            <SongCards />
+        <Grid item sm={3}>
+          <Grid container direction="column" justify="flex-start" alignItems="center">
+            <Grid item>
+              <Typography variant="h2">
+                  Settings
+              </Typography>
+            </Grid>
+            <Grid item>
+              <FormGroup row>
+                <FormControlLabel  control={
+                    <Switch checked={props.repeat} onChange={props.repeat_handle} value={props.repeat} />
+                  }
+                  label=<Typography variant="h6">Repeat</Typography>
+                 />
+              </FormGroup>
+            </Grid>
+            <Grid item>
+              <Typography variant="h5" style={{color:'#00A480'}}>
+                  Alarm sound
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Upload />
+            </Grid>
+            <Grid item>
+              <SongCards />
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
       </React.Fragment>
 
     )

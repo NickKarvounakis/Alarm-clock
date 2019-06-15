@@ -30,32 +30,26 @@ class Upload extends Component {
 
   return(
     <div>
-
       <Typography >
          -Upload sound from your computer
       </Typography>
       <Grid container direction="column">
-      <Grid container direction = "row">
-        <Grid item>
-        <input name="file" type="file" id="file" onChange={this.filesubmit} accept=".mp3,.wav,.aac,.ogg,.wma,.falc,.alac,.wma" className="inputfile" data-multiple-caption="{count} files selected" />
-        <Button variant="contained" color="secondary"><label htmlFor="file">{this.state.image_name}<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
-        </label></Button>
+        <Grid container direction = "row">
+          <Grid item>
+            <input name="file" type="file" id="file" onChange={this.filesubmit} accept=".mp3,.wav,.aac,.ogg,.wma,.falc,.alac,.wma" className="inputfile" data-multiple-caption="{count} files selected" />
+            <Button variant="contained" color="secondary"><label htmlFor="file">{this.state.image_name}<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+            </label></Button>
+          </Grid>
+        {this.state.image_name !== 'Choose a file' ?
+          <Grid item><Button variant="contained" color="secondary"  onClick={() => this.props.createProject(this.state.image)} style={{marginLeft:'0.7em'}}>
+             UPLOAD
+          </Button></Grid> : <CustomizedSnackbars />}
         </Grid>
-      {this.state.image_name !== 'Choose a file' ?
-        <Grid item><Button variant="contained" color="secondary"  onClick={() => this.props.createProject(this.state.image)} style={{marginLeft:'0.7em'}}>
-           UPLOAD
-        </Button></Grid> : <CustomizedSnackbars />}
+        <Grid item>
+          {this.props.progress > 0 ?
+              <div><Typography >Uploading progress</Typography><LinearDeterminate/></div> : <div></div>}
+        </Grid>
       </Grid>
-      <Grid item>
-        {this.props.progress > 0 ?
-            <div><Typography >Uploading progress</Typography><LinearDeterminate/></div> : <div></div>}
-
-
-      </Grid>
-
-              </Grid>
-
-
     </div>
   )
 }

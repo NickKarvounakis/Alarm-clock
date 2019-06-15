@@ -62,14 +62,13 @@ function LinearDeterminate(props) {
   //      }}
   return (
     <div className={classes.root}>
-    <ColorLinearProgress  value={props.progress} variant="determinate"/>
-    <CustomizedSnackbars progress={props.progress} />
+      <ColorLinearProgress  value={props.progress} variant="determinate"/>
+      <CustomizedSnackbars progress={props.progress} />
     </div>
   );
 }
 
 const mapStateToProps = (state) => {
-  console.log('state: ',state)
   return{
     progress:state.upload_progress
   }
