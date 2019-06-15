@@ -80,14 +80,10 @@ MySnackbarContentWrapper.propTypes = {
   variant: PropTypes.oneOf(['success', 'warning', 'error', 'info']).isRequired,
 };
 
-const useStyles2 = makeStyles(theme => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-}));
+
 
 export default function CustomizedSnackbars(props) {
-  const classes = useStyles2();
+
   const [open, setOpen] = React.useState(false);
 
   function handleClick() {

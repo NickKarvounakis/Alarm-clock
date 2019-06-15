@@ -1,4 +1,4 @@
-import {storage} from '../../firebase'
+import {storage} from '../../../../firebase'
 
 export const createProject = (image) => {
   return (dispatch,getState) => {
@@ -15,7 +15,7 @@ export const createProject = (image) => {
           if(progress === 100)
             {
             progress = 0
-            setTimeout(function(){ dispatch({type:'PROGRESS',progress}) }, 10000);
+            setTimeout(function(){ dispatch({type:'PROGRESS',progress}) }, 6000);
             }
 
         },

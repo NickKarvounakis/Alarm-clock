@@ -77,10 +77,6 @@ function SongCards(props){
     setOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   return(
   <React.Fragment>
         <Typography variant="h6" className="timestamp">OR</Typography>
@@ -114,7 +110,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return{
       song_player:() => {
-        dispatch(testCreator2('','',true))
+        dispatch(testCreator2(null,null,true))
       }
   }
 }

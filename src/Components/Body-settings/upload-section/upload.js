@@ -2,7 +2,7 @@ import React, { Component} from 'react'
 import { connect } from 'react-redux'
 
 //JS File Imports
-import { createProject } from '../../../store/actions/Action.js' //Action
+import { createProject } from './actions/Action.js' //Action
 import LinearDeterminate from './progressBar.js'
 import CustomizedSnackbars from './snackbar2.js'
 //Material UI Imports

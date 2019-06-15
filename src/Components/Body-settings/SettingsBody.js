@@ -7,42 +7,16 @@ import SongCards from './Modal/Modal.js'
 import Upload from './upload-section/upload.js'
 
 //Material UI Imports
-import { makeStyles} from '@material-ui/core/styles'; //styles
 import Grid from '@material-ui/core/Grid'; //for grid layout
 import FormControlLabel from '@material-ui/core/FormControlLabel'; //for form component
 import Typography from '@material-ui/core/Typography'; // for Typography component
 import Switch from '@material-ui/core/Switch'; // for Switch Component
-import { red } from '@material-ui/core/colors'; // for red color
 import FormGroup from '@material-ui/core/FormGroup'; // for form component
 
 
 
 
-const useStyles = makeStyles(theme => ({
-  card: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: red[500],
-  }
-}))
-
  function Settings(props){
-   const classes = useStyles();
 // const [expanded, setExpanded] = React.useState(false);
 //    function handleExpandClick() {
 //   setExpanded(!expanded);

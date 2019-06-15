@@ -1,5 +1,5 @@
 
-export default class App  {
+export default class Timestamp  {
 
    static hour(hour,operation){
     let hours = hour

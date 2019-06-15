@@ -64,7 +64,7 @@ function Cards(props) {
                     </Button>
                   </Grid>
                   <Grid item >
-                    <Button style={{maxWidth: '60px', maxHeight: '25px', minWidth: '30px', minHeight: '10px'}}  variant="contained" color="primary" className={classes.button} onClick={() => props.song_player(tile,props.sample)}>
+                    <Button style={{maxWidth: '60px', maxHeight: '25px', minWidth: '30px', minHeight: '10px'}}  variant="contained" color="primary" className={classes.button} onClick={() => props.song_player(tile,props.trigger)}>
                            <Typography style={{fontSize:'0.7rem'}}>PREVIEW</Typography>
                     </Button>
                   </Grid>
@@ -86,7 +86,7 @@ const mapStateToProps = (state) => {
   console.log('state: ',state)
   return{
     song_name:state.song_name,
-    sample:state.sample
+    trigger:state.trigger
   }
 }
 
@@ -95,8 +95,8 @@ const mapDispatchToProps = (dispatch) => {
       song_picker:(name) => {
         dispatch(testCreator(name))
     },
-      song_player:(name,sample) => {
-        dispatch(testCreator2(name,sample,false))
+      song_player:(name,trigger) => {
+        dispatch(testCreator2(name,trigger,false))
       }
   }
 }
