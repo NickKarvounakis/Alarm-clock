@@ -1,5 +1,5 @@
 
-
+// GIF IMAGES IMPORT
  import alarm from './static/images/alam-clock.gif'
  import digital from './static/images/digital-alarm-clock.gif'
  import bird from './static/images/bird.gif'

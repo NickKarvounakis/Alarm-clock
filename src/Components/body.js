@@ -1,14 +1,15 @@
 import React from 'react'
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import { connect } from 'react-redux'
+
+//JS File Imports
 import Settings from './Body-settings/SettingsBody.js'
 import Clock from './Body-timer/clock.js'
 import Header from './Header/Header.js'
-import Schedule from '../Components/Schedule/schedule'
+import Schedule from '../Components/Schedule/schedule.js'
 
-
-
+//Material UI Imports
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 
 
 

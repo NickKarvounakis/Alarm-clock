@@ -1,12 +1,11 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
 
-
+// MATERIAL UI IMPORTS
+import Grid from '@material-ui/core/Grid'; //for grid layout
+import Typography from '@material-ui/core/Typography'; //for Typography Component 
+import Box from '@material-ui/core/Box'; //for Box Component
+import Paper from '@material-ui/core/Paper'; //for Paper Component
 
 
 
@@ -91,14 +90,14 @@ const margin_removal = {
             <Box  mt={2} className="App" key={index + tile.name}>
               <Paper className="schedule ">
                 <Grid   direction="row" className="timestamp " container >
-                    <Grid item>
+                    <Grid item className="text-bottom">
                       { tile.hoursx < 10 ?  <Typography variant="h1" style={margin_removal} >0{tile.hoursx}:</Typography> : <Typography variant="h1" style={margin_removal} >{tile.hoursx}:</Typography>}
                     </Grid>
-                    <Grid item>
+                    <Grid item className="text-bottom">
                       { tile.minutesx < 10 ?  <Typography variant="h1" style={margin_removal} >0{tile.minutesx}</Typography> : <Typography variant="h1" style={margin_removal}>{tile.minutesx}</Typography>}
                     </Grid>
                     <Grid container direction="column">
-                      <Grid item><Typography>Sound:{tile.name}</Typography></Grid>
+                      <Grid item><Typography variant="h6" >Sound:{tile.name}</Typography></Grid>
                       <Grid item>{tile.differencehour === 0 && tile.differenceminute === 0 && tile.differencesecond ===0 ? <Typography style={{color:'#f50057'}} variant="h6">Alarm Fired</Typography> :<Typography variant="h6">Time-left:{tile.differencehour} hours and {tile.differenceminute} minutes {tile.differencesecond} seconds</Typography>}</Grid>
                     </Grid>
                 </Grid>

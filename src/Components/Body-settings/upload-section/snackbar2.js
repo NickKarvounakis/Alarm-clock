@@ -1,6 +1,10 @@
 import React from 'react';
 
-// Material UI Imports
+
+//Material UI Imports
+import PropTypes from 'prop-types';
+import clsx from 'clsx';
+import Button from '@material-ui/core/Button';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ErrorIcon from '@material-ui/icons/Error';
 import InfoIcon from '@material-ui/icons/Info';
@@ -11,8 +15,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import WarningIcon from '@material-ui/icons/Warning';
 import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import Grid from '@material-ui/core/Grid';
 
 
 const variantIcon = {
@@ -82,22 +85,16 @@ MySnackbarContentWrapper.propTypes = {
 
 const useStyles2 = makeStyles(theme => ({
   margin: {
-    margin: theme.spacing(1),
+    marginLeft: theme.spacing(1),
   },
 }));
 
-export default function CustomizedSnackbars(props) {
+export default function CustomizedSnackbars() {
   const classes = useStyles2();
   const [open, setOpen] = React.useState(false);
 
   function handleClick() {
-    if(props.progress === 100 )
-    {
-     setOpen(true);
-    }
-    else {
-      setOpen(false)
-    }
+    setOpen(true);
   }
 
   function handleClose(event, reason) {
@@ -105,37 +102,33 @@ export default function CustomizedSnackbars(props) {
       return;
     }
 
+    setOpen(false);
   }
-
-  function test(){
-    setTimeout(function(){ handleClick() }, 3000);
-
-  }
-
-  test()
 
   return (
     <div>
-      {/*
-      <Button variant="outlined" className={classes.margin} onClick={handleClick}>
-        Open success snackbar
+    <Grid item>
+     <Button variant="contained" color="secondary" className={classes.margin} onClick={handleClick}>
+        Upload
       </Button>
-      */}
+    </Grid>
       <Snackbar
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
         }}
         open={open}
-        autoHideDuration={1000}
+        autoHideDuration={6000}
         onClose={handleClose}
       >
         <MySnackbarContentWrapper
           onClose={handleClose}
-          variant="success"
-          message="Your file was uploaded successfully!"
+          variant="error"
+          className={classes.margin}
+          message="You need to upload a file first!!"
         />
       </Snackbar>
+
     </div>
   );
 }

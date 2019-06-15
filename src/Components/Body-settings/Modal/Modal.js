@@ -1,24 +1,17 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
+
+
+import Cards from './SongsGrid.js'
+
+// Material UI Imports
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-
-
-
-
 import { red } from '@material-ui/core/colors';
-
-
-
 import Modal from '@material-ui/core/Modal';
-
-import Cards from './SongsGrid'
-
-
-
 
 function getModalStyle() {
   const top = 50

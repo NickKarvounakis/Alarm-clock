@@ -1,29 +1,19 @@
 import React from 'react'
-import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux'
 
-import { makeStyles} from '@material-ui/core/styles';
-
-
-import Typography from '@material-ui/core/Typography';
-
-
-
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
-
-
-import { red } from '@material-ui/core/colors';
-
-
-
+//JS File Imports
 import constants from '../../store/constants'
 import SongCards from './Modal/Modal.js'
 import Upload from './upload-section/upload.js'
 
-
-
+//Material UI Imports
+import { makeStyles} from '@material-ui/core/styles'; //styles
+import Grid from '@material-ui/core/Grid'; //for grid layout
+import FormControlLabel from '@material-ui/core/FormControlLabel'; //for form component
+import Typography from '@material-ui/core/Typography'; // for Typography component
+import Switch from '@material-ui/core/Switch'; // for Switch Component
+import { red } from '@material-ui/core/colors'; // for red color
+import FormGroup from '@material-ui/core/FormGroup'; // for form component
 
 
 
@@ -96,7 +86,6 @@ const useStyles = makeStyles(theme => ({
 
 
 const mapStateToProps = (state) => {
-  console.log('state: ',state)
   return{
     repeat:state.repeat
   }

@@ -1,25 +1,18 @@
 import React from 'react'
-import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux'
+
 import constants from '../../store/constants'
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 
-import Typography from '@material-ui/core/Typography';
+// MATERIAL UI IMPORTS
+import Grid from '@material-ui/core/Grid'; //for grid layout
+import Button from '@material-ui/core/Button'; //for Button component
+import Tooltip from '@material-ui/core/Tooltip'; //for Tooltip component
+import Zoom from '@material-ui/core/Zoom';      // The zoom transition for the Tooltip component()
+import Typography from '@material-ui/core/Typography'; //for Typography component
+import { withStyles } from '@material-ui/core/styles'; //styles
 
 
 
-
-
-
-// const useStyles = makeStyles(theme => ({
-//   button: {
-//     margin: theme.spacing(1),
-//   },
-//   input: {
-//     display: 'none',
-//   },
-// }));
 
 const StyledButton = withStyles({
   root: {
@@ -73,7 +66,9 @@ const margin_removal = {
     </Grid>
         <Grid container direction="row" justify="flex-start" alignItems="center" >
           <Grid item  xs={4}>
+            <Tooltip TransitionComponent={Zoom} title={'Submit an alarm at ' + props.hours + ':' + props.minutes + '?'}>
             <StyledButton onClick={props.Submit}>Submit alarm</StyledButton>
+            </Tooltip>
           </Grid>
           <Grid item xs={4}>
             <StyledButton onClick={props.stop}>Stop Playing</StyledButton>

@@ -39,7 +39,7 @@ const time_left = (hours,minutes) => {
   console.log('DIFFERENCE',current_seconds)
   console.log('differnce',minutesx - current_minutes)
   console.log('------------current_hour',current_hour,'hourx----------',hoursx)
-  if((current_hour < hoursx || current_hour === hoursx) && minutesx > current_minutes) // FIRST CASE
+  if(( current_hour === hours && minutesx > current_minutes) || current_hour < hours ) // FIRST CASE
   {
         console.log('FIRST CASE')
   if(minutesx - current_minutes < 0) // SECOND CASE
@@ -53,11 +53,7 @@ const time_left = (hours,minutes) => {
     differencehour = hoursx - current_hour
     differenceminute= minutesx - current_minutes
     console.log(`differencehour = ${differencehour} differenceminute = ${differenceminute}`)
-  }
-
-
-  }
-
+  }}
   else{ //FOURTH CASE
     console.log('FOURTH CASE')
     if(minutesx < current_minutes)
@@ -70,15 +66,7 @@ const time_left = (hours,minutes) => {
     {
           differencehour = (24-(Math.abs(hoursx-current_hour)))
           differenceminute = minutesx-current_minutes
-    }
-    // else if(minutesx === current_minutes){
-    //   differencehour = (12-(Math.abs(hoursx-current_hour)))
-    //   differenceminute = minutesx-current_minutes
-    //
-    // }
-    // differencehour = 23-(Math.abs(hoursx-current_hour))
-    // differenceminute = 59 - (Math.abs(minutesx-current_minutes))
-  }
+    }}
 
   if(current_seconds > 0 && minutesx-current_minutes > 0)
     {
@@ -123,13 +111,10 @@ const conventor = (hours,minutes,seconds) => {
 // hours,minutes,song_playing,song_url,name
 const alarm = (state) => {
   let obj = {name:state.song_name}
-  console.log('---------------------------->',obj)
-  console.log('##PRE--------AUDIO----->',audio)
   const time = time_left(state.hours,state.minutes)
   console.log(time)
   const amount = conventor(time.differencehour,time.differenceminute,time.differencesecond)
   console.log(time)
-  console.log('SONG_NAME',state.song_url)
   // audio = new Audio(song_url)
    let obj2 = Object.assign({}, time, obj);
   // console.log('OBJECT2:',obj2)
@@ -146,7 +131,6 @@ const alarm = (state) => {
 
     audio.play();
   },amount);
-    console.log('###AFTER--------AUDIO----->',audio)
   return obj2
 }
 
