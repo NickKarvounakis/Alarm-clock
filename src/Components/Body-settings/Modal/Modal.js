@@ -101,7 +101,6 @@ function SongCards(props){
 
 
 const mapStateToProps = (state) => {
-  console.log('state: ',state)
   return{
     song_name:state.song_name
   }

@@ -105,6 +105,17 @@ color:grey;
 }
 
 
+  .nostyle:link {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+.nostyle:visited {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+
 /* SCHEDULE END */
 @media only screen and (max-width: 768px ) {
   .schedule{

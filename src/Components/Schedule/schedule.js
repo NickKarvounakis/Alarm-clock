@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 // MATERIAL UI IMPORTS
 import Grid from '@material-ui/core/Grid'; //for grid layout
-import Typography from '@material-ui/core/Typography'; //for Typography Component 
+import Typography from '@material-ui/core/Typography'; //for Typography Component
 import Box from '@material-ui/core/Box'; //for Box Component
 import Paper from '@material-ui/core/Paper'; //for Paper Component
 
@@ -34,7 +34,6 @@ const margin_removal = {
               song_name:[]
             }
             this.content = this.content.bind(this)
-            // this.Decrement = this.Decrement.bind(this)
     }
 
 
@@ -118,7 +117,7 @@ const margin_removal = {
   render(){
   return(
     <Box mt={5}>
-      <Typography variant="h2">SCHEDULED ALARMS</Typography>
+      <Typography variant="h2">SCHEDULED ALARMS<span  style={{fontSize:'0.6rem',color:'lightgrey',}}><a className="nostyle" href="https://nickkarvounakhs.netlify.com" target="_blank" rel="noopener noreferrer">&#9400;NICK KARVOUNAKIS</a></span></Typography>
       {this.content()}
     <content />
 

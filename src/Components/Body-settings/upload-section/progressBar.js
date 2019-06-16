@@ -18,9 +18,6 @@ const useStyles = makeStyles({
     borderRadius: 3,
     border: 0,
     color: 'white',
-
-
-
   },
   label:{
     textTransform: 'capitalize',

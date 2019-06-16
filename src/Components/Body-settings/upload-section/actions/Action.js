@@ -4,8 +4,6 @@ export const createProject = (image) => {
   return (dispatch,getState) => {
     if(image !== null)
     {
-        console.log('IMAGE THAT COMES IN IS: ',image)
-        console.log('---------UploadTask = ',image.name)
         const uploadTask = storage.ref(`images/${image.name}`).put(image)
         uploadTask.on('state_changed',
         (snapshot) => {
@@ -25,13 +23,9 @@ export const createProject = (image) => {
         },
          () => {
             //complete function
-            console.log('props.image:',image.name)
             storage.ref('images').child(image.name).getDownloadURL().then (url => {
-            console.log(url)
             dispatch({ type:'CREATE_PROJECT',url})
             dispatch({type:'SONG_SET',value:image.name})
-
-
             })
         })
   }

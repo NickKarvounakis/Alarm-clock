@@ -9,7 +9,6 @@ function App(props) {
     <div className="App">
       <Provider store={store} >
         <Body />
-
       </Provider>
     </div>
   );

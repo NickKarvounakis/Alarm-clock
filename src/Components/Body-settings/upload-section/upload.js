@@ -19,7 +19,6 @@ class Upload extends Component {
   }
 
   filesubmit = (e) => {
-    console.log('e: ', e.target.files[0])
     this.setState({
       image:e.target.files[0],
       image_name:e.target.files[0].name
@@ -57,7 +56,6 @@ class Upload extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('state: ',state)
   return{
     progress:state.upload_progress
   }
@@ -67,7 +65,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
    return{
      Submit_file:(target) => {
-       console.log('xd',target)
        dispatch({type:'UPLOAD_FILE',value:target})
    },
    createProject: (image) => {dispatch(createProject(image))}
