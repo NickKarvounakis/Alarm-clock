@@ -4,7 +4,7 @@ import  './App.css';
 import store from './store/'
 import Body from './Components/body.js'
 
-function App(props) {
+const App = () => {
   return (
     <div className="App">
       <Provider store={store} >

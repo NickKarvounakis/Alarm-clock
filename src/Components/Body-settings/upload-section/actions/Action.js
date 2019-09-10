@@ -1,24 +1,20 @@
-import {storage} from '../../../../firebase'
+import { storage } from '../../../../firebase'
 
 export const createProject = (image) => {
   return (dispatch,getState) => {
-    if(image !== null)
-    {
+    if(image !== null){
         const uploadTask = storage.ref(`images/${image.name}`).put(image)
         uploadTask.on('state_changed',
         (snapshot) => {
           // progress function
           var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           dispatch({type:'PROGRESS',progress})
-          if(progress === 100)
-            {
+          if(progress === 100){
             progress = 0
             setTimeout(function(){ dispatch({type:'PROGRESS',progress}) }, 6000);
-            }
-
+          }
         },
         (error) => {
-          //error function
           console.error(error)
         },
          () => {
@@ -28,9 +24,6 @@ export const createProject = (image) => {
             dispatch({type:'SONG_SET',value:image.name})
             })
         })
-  }
-  else {
-    console.log(image)
   }
   }
 }

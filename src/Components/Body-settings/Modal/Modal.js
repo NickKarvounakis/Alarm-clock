@@ -59,18 +59,9 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-function SongCards(props){
+const SongCards = props => {
   const classes = useStyles();
-  // const [expanded, setExpanded] = React.useState(false);
-//   function handleExpandClick() {
-//   setExpanded(!expanded);
-//
-// }
-
-
-
   const [open, setOpen] = React.useState(false);
-  // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
 
   const handleOpen = () => {
@@ -100,13 +91,13 @@ function SongCards(props){
 }
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return{
     song_name:state.song_name
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
     return{
       song_player:() => {
         dispatch(testCreator2(null,null,true))

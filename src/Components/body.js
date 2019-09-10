@@ -14,7 +14,7 @@ import Box from '@material-ui/core/Box';
 
 
 
-function Body(props){
+const Body = props => {
   return(
     <div>
       <Header />
@@ -30,7 +30,7 @@ function Body(props){
 }
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return{
     schedule:state.schedule
   }

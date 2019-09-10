@@ -16,13 +16,8 @@ import FormGroup from '@material-ui/core/FormGroup'; // for form component
 
 
 
- function Settings(props){
-// const [expanded, setExpanded] = React.useState(false);
-//    function handleExpandClick() {
-//   setExpanded(!expanded);
-// }
+ const Settings = props => {
   return(
-
       <React.Fragment>
         <Grid item sm={3}>
           <Grid container direction="column" justify="flex-start" alignItems="center">
@@ -36,7 +31,7 @@ import FormGroup from '@material-ui/core/FormGroup'; // for form component
                 <FormControlLabel  control={
                     <Switch checked={props.repeat} onChange={props.repeat_handle} value={props.repeat} />
                   }
-                  label=<Typography variant="h6">Repeat</Typography>
+                  label={<Typography variant="h6">Repeat</Typography>}
                  />
               </FormGroup>
             </Grid>
@@ -59,13 +54,13 @@ import FormGroup from '@material-ui/core/FormGroup'; // for form component
 }
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return{
     repeat:state.repeat
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
     return{
       repeat_handle:() => {
         dispatch({type:constants.REPEAT_TRIGGER})

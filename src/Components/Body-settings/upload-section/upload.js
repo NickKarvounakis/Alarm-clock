@@ -1,4 +1,4 @@
-import React, { Component} from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 //JS File Imports
@@ -18,7 +18,7 @@ class Upload extends Component {
     image_name:'Choose a file'
   }
 
-  filesubmit = (e) => {
+  filesubmit = e => {
     this.setState({
       image:e.target.files[0],
       image_name:e.target.files[0].name
@@ -55,7 +55,7 @@ class Upload extends Component {
 
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return{
     progress:state.upload_progress
   }

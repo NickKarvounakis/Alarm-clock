@@ -35,8 +35,7 @@ const margin_removal = {
   fontSize:'9rem'
 }
 
- function Clock(props){
-
+ const Clock = props => {
   return(
     <Grid item lg={3}>
     <Grid container  direction="column"   justify="center"  alignItems="center">
@@ -48,7 +47,6 @@ const margin_removal = {
             { props.minutes < 10 ?  <Typography variant="h1" style={margin_removal} >0{props.minutes}</Typography> : <Typography variant="h1" style={margin_removal}>{props.minutes}</Typography>}
           </Grid>
       </Grid>
-
       <Grid  container direction="row"  >
         <Grid item>
           <img src="cross3.png" alt="plus" width="50" onClick={props.Increment_hours} style={{marginRight:'0.5em'}} className="clock-button"/>
@@ -64,23 +62,23 @@ const margin_removal = {
         </Grid>
       </Grid>
     </Grid>
-        <Grid container direction="row" justify="flex-start" alignItems="center" >
-          <Grid item  xs={4}>
+        <div style={{ display:'grid',gridTemplateColumns: '160px 160px' }}>
+          <div  >
             <Tooltip TransitionComponent={Zoom} title={'Submit an alarm at ' + props.hours + ':' + props.minutes + '?'}>
             <StyledButton onClick={props.Submit}>Submit alarm</StyledButton>
             </Tooltip>
-          </Grid>
-          <Grid item xs={4}>
+          </div>
+          <div>
             <StyledButton onClick={props.stop}>Stop Playing</StyledButton>
-          </Grid>
-        </Grid>
+          </div>
+        </div>
       </Grid >
   )
 }
 
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return{
     minutes:state.minutes,
     hours:state.hours,
@@ -88,7 +86,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
     return{
       Increment_minutes: () => {
         dispatch({ type:constants.INCREASE_MINUTES})

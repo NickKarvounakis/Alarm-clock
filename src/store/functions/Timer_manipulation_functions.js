@@ -3,14 +3,11 @@ export default class Timestamp  {
 
    static hour(hour,operation){
     let hours = hour
-
-    if(operation === 'increment')
-      {
+    if(operation === 'increment'){
         hours++;
         hours = hours === 24 ? 0 : hours
       }
-    if(operation === 'decrement')
-      {
+    if(operation === 'decrement'){
         hours--;
         hours = hours === -1 ? 23 : hours
       }
@@ -19,14 +16,11 @@ export default class Timestamp  {
 
    static minute(minute,operation){
     let minutes = minute
-
-    if(operation === 'increment')
-      {
+    if(operation === 'increment'){
         minutes++;
         minutes = minutes === 60 ? 0 : minutes
       }
-      if(operation === 'decrement')
-        {
+      if(operation === 'decrement'){
           minutes--;
           minutes = minutes === -1 ? 59 : minutes
         }

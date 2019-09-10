@@ -1,13 +1,12 @@
-//
 
 
-  let audio2 = undefined
-  let rev = undefined
-  let temp = undefined
+
+let audio2 = undefined
+let rev = undefined
+let temp = undefined
 const testCreator2 = (payload,trigger,bool) => {
   return (dispatch) => {
-      switch(bool)  //if function is being called by SongsGrid with an intent of playing the audio execute the code bellow
-        {
+      switch(bool)  {//if function is being called by SongsGrid with an intent of playing the audio execute the code bellow
           case false:
               if(audio2)
                 audio2.pause()

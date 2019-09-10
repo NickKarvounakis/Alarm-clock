@@ -33,7 +33,7 @@ const ColorLinearProgress = withStyles({
   },
 })(LinearProgress);
 
-function LinearDeterminate(props) {
+const LinearDeterminate = props =>  {
   const classes = useStyles();
   const [completed, setCompleted] = React.useState(0);
 
@@ -53,10 +53,7 @@ function LinearDeterminate(props) {
       clearInterval(timer);
     };
   }, []);
-  // classes={{
-  //        root: classes.root, // class name, e.g. `classes-nesting-root-x`
-  //        label: classes.label, // class name, e.g. `classes-nesting-label-x`
-  //      }}
+
   return (
     <div className={classes.root}>
       <ColorLinearProgress  value={props.progress} variant="determinate"/>

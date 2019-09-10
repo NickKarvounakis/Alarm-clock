@@ -2,7 +2,6 @@
 let audio = ''
 export default class Timer  {
 
-
   static time_left(hours,minutes){
     let differencehour
     let differenceminute
@@ -11,31 +10,27 @@ export default class Timer  {
     const current_minutes = date.getMinutes()
     const current_hour = date.getHours()
     const current_seconds = date.getSeconds()
-    if(( current_hour === hours && minutes > current_minutes) || current_hour < hours ) // FIRST CASE
-    {
-    if(minutes - current_minutes < 0) // SECOND CASE
-      {
-         differencehour = hours - current_hour - 1
-         differenceminute = 59-(Math.abs(minutes - current_minutes))
+    if(( current_hour === hours && minutes > current_minutes) || current_hour < hours ) {
+      if(minutes - current_minutes < 0) {
+          differencehour = hours - current_hour - 1
+          differenceminute = 59-(Math.abs(minutes - current_minutes))
+      } 
+      else{   
+        differencehour = hours - current_hour
+        differenceminute= minutes - current_minutes
       }
-    else{   //THIRD CASE
-      differencehour = hours - current_hour
-      differenceminute= minutes - current_minutes
-    }}
-    else{ //FOURTH CASE
-      if(minutes < current_minutes)
-        {
-            differencehour = (24-(Math.abs(hours-current_hour)))-1
-            differenceminute = (59 - Math.abs(minutes-current_minutes))
+    }
+    else{ 
+        if(minutes < current_minutes){
+              differencehour = (24-(Math.abs(hours-current_hour)))-1
+              differenceminute = (59 - Math.abs(minutes-current_minutes))
+          }
+        else if(minutes >= current_minutes){
+              differencehour = (24-(Math.abs(hours-current_hour)))
+              differenceminute = minutes-current_minutes
+          }
         }
-      else if(minutes >= current_minutes)
-      {
-            differencehour = (24-(Math.abs(hours-current_hour)))
-            differenceminute = minutes-current_minutes
-      }}
-
-    if( minutes-current_minutes > 0)
-      {
+    if( minutes-current_minutes > 0){
          differenceminute = differenceminute-1
         differencesecond= 60 - Math.abs(current_seconds)
       }
@@ -47,7 +42,6 @@ export default class Timer  {
     else if( minutes-current_minutes < 0){
         differencesecond =  60-Math.abs(current_seconds)
     }
-
     const info = {
       hoursx:hours,
       minutesx:minutes,
@@ -55,7 +49,7 @@ export default class Timer  {
       differenceminute:differenceminute,
       differencesecond:differencesecond
     }
-    return info   //
+    return info   
   }
 
   static  conventor(hours,minutes,seconds){
@@ -64,19 +58,16 @@ export default class Timer  {
     const ms_seconds = 1000 * seconds
     return ms_hours + ms_minutes + ms_seconds
   }
-  // state.hours,state.minutes,state.repeat,state.song_url,state.song_name
-  // hours,minutes,song_playing,song_url,name
+
+
   static  alarm(state) {
     let obj = {name:state.song_name}
     const time = this.time_left(state.hours,state.minutes)
     const amount = this.conventor(time.differencehour,time.differenceminute,time.differencesecond)
-    // audio = new Audio(song_url)
-     let obj2 = Object.assign({}, time, obj);
-    // console.log('OBJECT2:',obj2)
+    let obj2 = Object.assign({}, time, obj);
     setTimeout(() => {
       audio = new Audio(state.song_url)
-      if(state.repeat)
-      {
+      if(state.repeat){
         audio.addEventListener('ended', function() {
             this.currentTime = 0
             this.play()
@@ -89,13 +80,10 @@ export default class Timer  {
   }
 
   static stop() {
-    if(audio)
-      {
+    if(audio){
         audio.pause()
         return false;
       }
     return true;
   }
-
-
 }
